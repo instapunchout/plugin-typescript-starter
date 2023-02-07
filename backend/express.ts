@@ -10,6 +10,7 @@ const app = express();
 
 export interface ProxyResponse {
   email: string;
+  punchout_id: string;
 }
 
 // will be called by the procurement system
@@ -29,7 +30,7 @@ app.post('/punchout/login', async (req, res) => {
 
   // response fields are snake case
   let response = await axios
-    .post("https://punchout.cloud/proxy", {
+    .post<ProxyResponse>("https://punchout.cloud/proxy", {
       headers: {},
       server: {},
       body: "",
