@@ -15,7 +15,7 @@ export interface ProxyResponse {
 
 // will be called by the procurement system
 // proxies all requests to punchout.cloud
-app.get('/punchout/cxml/:id', async (req, res) => {
+app.post('/punchout/cxml/:id', async (req, res) => {
   // the req.body is an xml string
   let response = await axios
     .post("https://punchout.cloud/cxml/" + req.params.id, req.body);
